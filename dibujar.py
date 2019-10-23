@@ -1,6 +1,7 @@
 from tkinter import *
 from api import API
 import os
+import pyttsx3
 import time 
 
 class Draw():
@@ -28,6 +29,10 @@ class Draw():
 		self.list.delete(0, END)
 		self.w.delete("all")
 		self.dibujar()
+		eng = pyttsx3.init()
+		voices = eng.getProperty('voices')       #getting details of current voice
+		eng.setProperty('voice', voices[1].id)
+		eng.setProperty('rate', 118)
 		try:
 			if len(self.palabra.get())%2 == 0:
 				automata = APP("ab", self)
@@ -38,9 +43,13 @@ class Draw():
 				aux = automata.crear_matriz()
 				self.isPalindromeImpar(self.palabra.get(), aux, "ab")
 			self.list.insert(END, "Palabra Aceptada")
+			eng.say("palabra aceptada")
+			eng.runAndWait()
 		except:
 			self.list.insert(END, "Palabra No Aceptada")
 			print(False)
+			eng.say("palabra no aceptada")
+			eng.runAndWait()
 
 	def insertar(self, palabra):
 		self.list.insert(END, pal)
