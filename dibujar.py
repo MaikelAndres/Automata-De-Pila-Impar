@@ -24,14 +24,14 @@ class Draw():
 		self.dibujar()
 		self.mostrar()
 
-	def validar(self):
+	def validar(self):                               
 		clear = lambda: os.system('cls')
 		clear()
 		self.list.delete(0, END)
 		self.w.delete("all")
 		self.dibujar()
 		eng = pyttsx3.init()
-		voices = eng.getProperty('voices')       #getting details of current voice
+		voices = eng.getProperty('voices')       #para reproducir la voz
 		eng.setProperty('voice', voices[1].id)
 		eng.setProperty('rate', 118)
 		try:
@@ -55,7 +55,7 @@ class Draw():
 	def insertar(self, palabra):
 		self.list.insert(END, pal)
 
-	def isPalindromeImpar(self, palabra, matriz, lenguaje):
+	def isPalindromeImpar(self, palabra, matriz, lenguaje):   #palindromeimpar
 		estado = "p"
 		pila="#"
 		count = j = -1
@@ -75,7 +75,7 @@ class Draw():
 					self.list.insert(END, pal)
 					self.list2.delete(0, END)
 					self.list2.insert(END, pila)
-					time.sleep(2)
+					time.sleep(3)
 					self.w.update()
 					print([a, pila[len(pila)-1:],aux[1]], "\t"+estado+"\t ", palabra[j:]+"\t ", pila)
 					estado = aux[0]
@@ -87,7 +87,8 @@ class Draw():
 					else:
 						return False
 
-	def dibujar(self, estados=["P1", "Q2", "R"]):
+	def dibujar(self, estados=["P1", "Q2", "R"]):    #dibujando el automata
+{ñpoi43 
 		count = 0
 		x = self.x
 		y = self.y
@@ -112,7 +113,7 @@ class Draw():
 					self.w.create_polygon(points, width=3, fill='#484c7f')
 			x += 100
 			
-	def dar_estado1(self, transicion, pos, tam):
+	def dar_estado1(self, transicion, pos, tam):         #transciicones de los tres estados
 		xy = self.x-25, pos*10+self.y+160
 		if tam > 6:
 			if pos < 3:
