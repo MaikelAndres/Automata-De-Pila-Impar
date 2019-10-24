@@ -19,6 +19,7 @@ class Draw():
 		self.w.pack()
 		self.x = x
 		self.y = y
+		Label(self.ventana,text="ELABORADO POR: MICHAEL HIDALGO , BREINER PATRON",background='#D3CECE').place(x=170,y=330)
 		self.w.config(scrollregion=self.w.bbox("all"))
 		self.dibujar()
 		self.mostrar()
